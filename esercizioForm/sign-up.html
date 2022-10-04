@@ -19,9 +19,11 @@
         <div style="margin: 5%;">
             <form action="" method="get">
                 <label class="form-label" for="fname">First name:</label><br>
-                <input class="form-control" type="text" id="fname" name="txtFname" placeholder="Nome"><br>
+                <input class="form-control" type="text" id="fname" name="txtFname" placeholder="Nome" pattern="[A-Za-z]*"
+                       oninvalid="this.setCustomValidity('Questo campo deve essere riempito')" 
+                       onchange="this.setCustomValidity('')"><br>
                 <label class="form-label" for="lname">Last name:</label><br>
-                <input class="form-control" type="text" id="lname" name="txtLname" placeholder="Cognome>
+                <input class="form-control" type="text" id="lname" name="txtLname" placeholder="Cognome">
                 <br>
                 <label class="form-label" for="age">Age:</label><br>
                 <input class="form-control" type="number" placeholder="Età" id="age" name="nmAge" min="0">
