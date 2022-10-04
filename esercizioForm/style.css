@@ -1,0 +1,25 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #007fff;
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22-set-2022, 17.08.32
+    Author     : admin
+*/
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Forms</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body style="margin: 5%;">
+        <div class="form-group" margin-left="10px">
+            <h1>I FORM</h1>
+            <form action="/action_page.php">
+                <label class="form-label" for="fname">First name:</label><br>
+                <input class="form-control" type="text" id="fname" name="txtFname"><br>
+                <label class="form-label" for="lname">Last name:</label><br>
+                <input class="form-control" type="text" id="lname" name="txtLname">
+                <br>
+                <label class="form-label" for="age">Age:</label><br>
+                <input class="form-control" type="number" id="age" name="nmAge" min="0">
+                <br><br>
+                <label class="form-label" for="date">Data</label><br>
+                <input type="date" id="date" name="date" />
+                <br><br>
+                <label class="form-label">Gender:</label><br>
+                <input class="form-check-input" type="radio" id="male" name="btnGender" value="Male">
+                <label class="form-label" for="male">Male</label><br>
+                <input class="form-check-input" type="radio" id="female" name="btnGender" value="Female">
+                <label class="form-label" for="female">Female</label><br>
+                <input class="form-check-input" type="radio" id="other" name="btnGender" value="Wrong">
+                <label class="form-label" for="other">Other</label>
+                <br><br>
+                <h3>Do you have a transport?</h3>
+                <input class="form-check-input" type="checkbox" id="vehicle1" name="chxVehicle1" value="Bike">
+                <label class="form-label" for="vehicle1"> I have a bike</label><br>
+                <input class="form-check-input" type="checkbox" id="vehicle2" name="chxVehicle2" value="Car">
+                <label class="form-label" for="vehicle2"> I have a car</label><br>
+                <input class="form-check-input" type="checkbox" id="vehicle3" name="chxVehicle3" value="Boat">
+                <label class="form-label" for="vehicle3"> I have a boat</label>
+                <br><br>
+                <label for="exampleColorInput" class="form-label">Color picker</label>
+                <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#fffff" title="Choose your color">
+                <br><br>
+                <label for="formFile" class="form-label">Select a file</label>
+                <input class="form-control" type="file" id="formFile">
+                <br><br>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <br><br>
+
+                <h1>GET</h1>
+                <form action="search.php">
+                    <input type="text" name="author" placeholder="Inserisci autore" />
+                    <input type="submit" value="Cerca" />
+                </form>
+                <br><br>
+                <form action="register.php" method="post">
+                    <input type="text" name="username" placeholder="Inserisci lo username" /><br>
+                    <input type="password" name="password" placeholder="Inserisci la password" /><br>
+                    <input type="submit" value="Registrati" />
+                </form>
+            </form>
+            <br><br><br>
+        </div>
+    </body>
+
+</html>
