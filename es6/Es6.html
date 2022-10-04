@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <style>td{
+                height:40px;
+                width:40px;
+            }</style>
+
+        <title>Forza 4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body> 
+
+        <script type='text/javascript'>
+            var varTurno = 0;
+            var vinto = 0;
+            function Clicca(elemento) {
+                if(vinto === 1){
+                    return 0;
+                    
+                }
+                
+                const riga = elemento.parentNode;
+                var cella = elemento.id;
+                const colonna = elemento.className;
+                var cliccabile = 1;
+                
+                if (riga.id !== '6') {
+                    cliccabile = 0;
+                    cella = parseInt(cella); 
+                    cella += 10;  
+                    var elesotto = document.getElementById(cella);
+                    if (elesotto.style.backgroundColor === 'red' || elesotto.style.backgroundColor === 'blue') {
+                        cliccabile = 1;
+                    }
+                }
+                
+                if (cliccabile === 1 && elemento.style.backgroundColor !== 'red' && elemento.style.backgroundColor !== 'blue') {
+                    if (varTurno % 2 === 0) {
+                        elemento.style.backgroundColor = 'red'; 
+                    } else {
+                        elemento.style.backgroundColor = 'blue';
+                    }
+                    varTurno++;
+                    controllo(elemento);
+                }
+
+            }
+            
+            function controllo(elemento){
+                var cella = elemento.id;
+                var cella2 = parseInt(cella);
+                const colore = document.getElementById(cella).style.backgroundColor;
+                var controllaColore = 0;
+                var i=0;
+                
+                if(cella2 < 41){
+                    while(i<3){
+                        cella2 += 10;
+                        i++;
+                        if(document.getElementById(cella2).style.backgroundColor === colore)
+                            controllaColore++;
+                    }
+                    if(controllaColore === 3){
+                        window.alert('hai vinto!');
+                        vinto = 1;
+                    }
+                        
+                }
+                cella2= parseInt(cella);
+                controllaColore = 0;
+                for(i=0; i<3; i++){
+                    cella2--;
+                        if(cella2 % 10 === 0 )
+                            break;
+                        
+                            if(document.getElementById(cella2).style.backgroundColor === colore)
+                                controllaColore++;
+                            else
+                                break;   
+                }
+  
+                cella2= parseInt(cella);
+                for(i=0; i<3; i++){
+                    cella2++;
+                        if(cella2 % 10 === 8 )
+                            break;
+                        
+                            if(document.getElementById(cella2).style.backgroundColor === colore)
+                                controllaColore++;
+                            else
+                                break;
+                }
+                if(controllaColore >= 3){
+                        window.alert('hai vinto!');
+                        vinto = 1;
+                    }
+                    
+                cella2= parseInt(cella);
+                controllaColore = 0;
+                for(i=0; i<3; i++){
+                    cella2+=11;
+                        if(cella2 % 10 === 8 || cella2 > 68 )
+                            break;
+                            
+                            if(document.getElementById(cella2).style.backgroundColor === colore)
+                                controllaColore++;
+                            else
+                                break; 
+                }
+                
+                cella2= parseInt(cella);
+                for(i=0; i<3; i++){
+                    cella2-=11;
+                        if(cella2 % 10 === 0 || cella2 < 11 )
+                            break;
+                            
+                            if(document.getElementById(cella2).style.backgroundColor === colore)
+                                controllaColore++;
+                            else
+                                break; 
+                }
+                
+                if(controllaColore >= 3){
+                        window.alert('hai vinto!');
+                        vinto = 1;
+                    }
+                
+                
+                
+                
+                cella2= parseInt(cella);
+                controllaColore = 0;
+                for(i=0; i<3; i++){
+                    cella2-=9;
+                        if(cella2 % 10 === 8 || cella2 < 11 )
+                            break;
+                            
+                            if(document.getElementById(cella2).style.backgroundColor === colore)
+                                controllaColore++;
+                            else
+                                break;
+                }
+                
+                cella2= parseInt(cella);
+                for(i=0; i<3; i++){
+                    cella2+=9;
+                        if(cella2 % 10 === 0 || cella2 > 68 )
+                            break;
+                            
+                            if(document.getElementById(cella2).style.backgroundColor === colore)
+                                controllaColore++;
+                            else
+                                break;
+                }
+                if(controllaColore >= 3){
+                        window.alert('hai vinto!');
+                        vinto = 1;
+                    }
+    }
+        </script>
+
+
+
+        <div>Gioco Forza 4</div>
+
+        <table id="tabella" border="1" >
+
+            <tr id="1"><td id="11" onclick="Clicca(this)"></td><td id="12" onclick="Clicca(this)"></td><td id="13" onclick="Clicca(this)"></td><td id="14" onclick="Clicca(this)"></td><td id="15" onclick="Clicca(this)"></td><td id="16" onclick="Clicca(this)"></td><td id="17" onclick="Clicca(this)"></td></tr>
+            <tr id="2"><td id="21" onclick="Clicca(this)"></td><td id="22" onclick="Clicca(this)"></td><td id="23" onclick="Clicca(this)"></td><td id="24" onclick="Clicca(this)"></td><td id="25" onclick="Clicca(this)"></td><td id="26" onclick="Clicca(this)"></td><td id="27" onclick="Clicca(this)"></td></tr>
+            <tr id="3"><td id="31" onclick="Clicca(this)"></td><td id="32" onclick="Clicca(this)"></td><td id="33" onclick="Clicca(this)"></td><td id="34" onclick="Clicca(this)"></td><td id="35" onclick="Clicca(this)"></td><td id="36" onclick="Clicca(this)"></td><td id="37" onclick="Clicca(this)"></td></tr>
+            <tr id="4"><td id="41" onclick="Clicca(this)"></td><td id="42" onclick="Clicca(this)"></td><td id="43" onclick="Clicca(this)"></td><td id="44" onclick="Clicca(this)"></td><td id="45" onclick="Clicca(this)"></td><td id="46" onclick="Clicca(this)"></td><td id="47" onclick="Clicca(this)"></td></tr>
+            <tr id="5"><td id="51" onclick="Clicca(this)"></td><td id="52" onclick="Clicca(this)"></td><td id="53" onclick="Clicca(this)"></td><td id="54" onclick="Clicca(this)"></td><td id="55" onclick="Clicca(this)"></td><td id="56" onclick="Clicca(this)"></td><td id="57" onclick="Clicca(this)"></td></tr>
+            <tr id="6"><td id="61" onclick="Clicca(this)"></td><td id="62" onclick="Clicca(this)"></td><td id="63" onclick="Clicca(this)"></td><td id="64" onclick="Clicca(this)"></td><td id="65" onclick="Clicca(this)"></td><td id="66" onclick="Clicca(this)"></td><td id="67" onclick="Clicca(this)"></td></tr>
+        </table>
+    </body>
+</html>

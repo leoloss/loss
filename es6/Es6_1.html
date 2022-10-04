@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title> gioco Forza 4 </title>
+
+    <style type="text/css">
+   
+    body {
+	margin: 55px;
+	padding: 0;
+	background-color: #FFFFFF;
+	font-size: 85%;		
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+    
+    table {
+	margin: auto;
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 480px;
+	height: 400px;
+    }
+    
+    table tr td {
+	border: 1px solid black;
+	height: 60px;
+	text-align: center;
+    }
+    
+    </style>
+
+    <script type="text/javascript">
+    <!-- hiding
+   	/* array 2D che rappresenta la tabella */
+   	var tab = new Array(6);
+   	for (i = 0; i < 7; i++) {
+   		tab[i] = new Array(7);
+   	}
+   	
+   	cleanTab();
+   	
+   	
+   	function cleanTab() {
+   		for (i = 0; i < tab.length; i++)
+   			for (j = 0; j < tab[0].length; j++)
+   				tab[i][j] = 0;
+   	}
+   	
+    //scelta del giocatore che deve iniziare
+    function whoStart() {
+	askNameRedPlayer = prompt("Scegli il nome per il giocatore con la pedina rossa");
+	
+	    if(askNameRedPlayer == null) {
+		return;
+	    }
+	    
+	    else if(askNameRedPlayer == "") {
+		askNameRedPlayer = "redPlayer";
+	    }
+		
+	askNameBlackPlayer = prompt("Scegli il nome per il giocatore con la pedina nera");
+	
+	    if(askNameBlackPlayer == null) {
+		return;
+	    }
+	    
+	    else if(askNameBlackPlayer == "") {
+		askNameBlackPlayer = "blackPlayer";
+	    }
+	
+	
+	askWhoStart = prompt("Chi inizia per primo?\n Scrivi " + askNameRedPlayer + " se vuoi che inizi il rosso\n o\n " + askNameBlackPlayer + " se vuoi che inizi il nero", "redPlayer");
+	
+	    if(askWhoStart == null) {
+		return;
+	    }
+	    
+	    if(askWhoStart != askNameRedPlayer && askWhoStart != askNameBlackPlayer) {
+		alert("Questo giocatore non esiste");
+		return whoStart();
+	    }
+	    
+	alert("Inizia " + askWhoStart);
+    
+	//controlla chi deve iniziare, il giocatore con la pedina rossa o il giocatore con la pedina nera
+	if(askWhoStart == askNameRedPlayer) {
+	    x=0;
+	}
+			
+	else if(askWhoStart == askNameBlackPlayer) {
+	    x=1;
+	}
+    }
+    
+    // inserire la pedina
+    function insertPedina(numCells) {
+	var table = document.getElementById("table");
+	createCircle = document.createElement("img");
+	
+	//inserisce tutte le altre pedine    
+	for(var i= tab.length - 1; i>0; i--) {  
+	    
+	    if (tab[i][numCells] == 0) { // posto libero
+				
+		if(x==0) {
+		    x=1;
+		    tab[i][numCells] = 1;
+		    createCircle.setAttribute("src", "cerchio_red.jpg");
+			
+		}
+		else {
+		    x=0;
+		    tab[i][numCells] = -1;
+		    createCircle.setAttribute("src", "cerchio_black.jpg");
+			
+		}
+		var contCells = table.rows[i].cells[numCells];
+		contCells.appendChild(createCircle);
+	        break;
+	    }
+	}
+	
+	// controlla la vittoria
+	check4Winner(i, numCells);   
+	
+    }	
+    
+    
+    
+    // serve a check4Winner
+    function outOfBounds(i, j) {
+    		return (i < 0) || (i >= tab.length) || (j < 0) || (j >= tab[0].length);
+    }
+    
+    
+    
+    function check4Winner(i, j) {
+		
+		s = tab[i][j]; // 1 rosso, -1 nero
+		
+		// esplora ogni direzione delle 4 possibili \ | / -
+		for (dir = 0; dir < 4; dir++) {
+			
+			count = 0;
+			
+			// esplora i due versi di una direzione
+			for (sense = -1; sense < 2; sense+=2) {
+				
+				for (z = sense; sense*z < 4; z += sense) {
+					i1 = i + ((dir == 3) ? 0 : z);
+					j1 = j + (-z * ((dir % 3) - 1));
+					
+					if ( !outOfBounds(i1, j1) && tab[i1][j1] == s ) {
+						if (++count == 3) {
+							alert("vince " + ((s == 1) ? askNameRedPlayer : askNameRedPlayer) + "!");
+							return;
+						}
+					} else {
+						break;
+					}
+				}
+			}
+		}
+		    
+    }
+    // -->
+    </script>
+
+</head>
+
+
+
+
+<body>
+   
+   <div><input type="button" value="Chi inizia" onclick="whoStart();" /> <br />
+	<input type="text" size="10" /> 	
+	<input type="button" value="?" onclick="check4Winner();" /> <br />
+   </div>
+    
+    
+    <table id="table">
+	<tr>
+
+	    <td> <img src="freccia-giu.jpg" alt="freccia giu" title="freccia giu" width="50" height="65" onclick="insertPedina(0);" /> </td>
+	    <td> <img src="freccia-giu.jpg" alt="freccia giu" title="freccia giu" width="50" height="65" onclick="insertPedina(1);" /> </td>
+	    <td> <img src="freccia-giu.jpg" alt="freccia giu" title="freccia giu" width="50" height="65" onclick="insertPedina(2);" /> </td>
+	    <td> <img src="freccia-giu.jpg" alt="freccia giu" title="freccia giu" width="50" height="65" onclick="insertPedina(3);" /> </td>
+	    <td> <img src="freccia-giu.jpg" alt="freccia giu" title="freccia giu" width="50" height="65" onclick="insertPedina(4);" /> </td>
+
+	    <td> <img src="freccia-giu.jpg" alt="freccia giu" title="freccia giu" width="50" height="65" onclick="insertPedina(5);" /> </td>
+	    <td> <img src="freccia-giu.jpg" alt="freccia giu" title="freccia giu" width="50" height="65" onclick="insertPedina(6);" /> </td>
+	</tr>
+    
+	<tr>
+	    <td> </td>
+	    <td> </td>
+
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	</tr>
+
+    
+	<tr>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+
+	    <td> </td>
+	    <td> </td>
+	</tr>
+    
+	<tr>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	</tr>
+    
+	<tr>
+	    <td> </td>
+
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+
+	</tr>
+    
+	<tr>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+
+	    <td> </td>
+	    <td> </td>
+	</tr>
+
+	<tr>
+	    <td> </td>
+	    <td> </td>
+
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	    <td> </td>
+	</tr>
+
+    
+    </table>
+    
+    
+    
+    
+    
+    
+</body>
+</html>
+
