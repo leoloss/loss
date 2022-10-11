@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login</title>
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+        <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+            body{
+                background-color: #cc6633;
+
+            }
+
+            form{
+                width: 400px;
+                align-items: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .login{
+                background-color: wheat;
+                border: 3px outset black;
+                margin-left: 100px;
+                margin-right: 100px;
+            }
+
+
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+
+            .nav-scroller {
+                position: relative;
+                z-index: 2;
+                height: 2.75rem;
+                overflow-y: hidden;
+            }
+
+            .nav-scroller .nav {
+                display: flex;
+                flex-wrap: nowrap;
+                padding-bottom: 1rem;
+                margin-top: -1px;
+                overflow-x: auto;
+                text-align: center;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+        </style>
+
+    </head>
+    <body class="text-center">
+
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="form.html">Home</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+        <br><br>
+
+        <div class="login" style="margin: 5%;">
+            <br><br>
+            <img src="https://www.ensa.education/login-h/files/trigger-image-316.png" style="width:400px;height:150px;">
+            <p>	
+            <h2 align="center">
+                Effettua il login per acquistare i nostri prodotti!
+            </h2>
+        </p>
+        <br><br>
+        <form action="" method="get">
+            <div class="mb-3">
+
+                <label for="exampleInputEmail1" class="form-label">
+                    Email
+                </label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" pattern="[a-z0-9]+.+[a-z0-9]+@buonarroti.tn.it" placeholder="nome.cognome@buonarroti.tn.it" required="">
+
+                <div id="emailHelp" class="form-text">
+                    Non condivideremo mai la tua email con nessuno.
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+               <input name="txtPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" required="">
+            </div>
+
+            <button type="submit" class="btn btn-primary" name="btnSubmit" value="submit">Login</button>
+            <br><br>
+            <p style="text-align: center; color: black">
+                <font size="+1">
+                Se non ti sei ancora registrato passa da <a href="sign-up2.html">qui</a>!
+                </font>
+            </p>  
+        </form> 
+    </div>
+</body>
+</html>
