@@ -4,7 +4,7 @@
         <title>Accedi</title>
     </head>
     <body>
-        <form name="frmAccedi" action="altra_pagina.php" method="get">
+        <form name="frmAccedi" action="altra_pagina.php" method="get" onsubmit="unisci()">
             <label>Email</label>                  
             <input type="text" id="txtEmail" name="txtEmail" required="" maxlength="50" pattern="[a-z]{3,20}\.[a-z]{3,20}[0-9]*">
             <input type="text" id="txtDominio" name="txtDominio" value="@buonarroti.tn.it" readonly="">
@@ -14,7 +14,7 @@
             <br><br>
             <input type="checkbox" name="chkRicordati" value="true"/>
             <br><br>            
-            <input type="submit" name="btnAccedi" value="Accedi" onclick="unisci()">
+            <input type="submit" name="btnAccedi" value="Accedi">
             <script>
                 //email = document.getElementById("txtEmail");
                 //dominio = document.getElementById("txtDominio");
@@ -31,7 +31,7 @@
 
                 function unisci() {
                     output = email.value + dominio.value;
-                    document.getElementById("txtEmail") = output;
+                    document.getElementById("txtEmail").value = output;
                 }
 
                 email.onkeyup = validaEmail();
