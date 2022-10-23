@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Calcolatrice</title>
+
+        <link href="../bootstrapExample/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+    <!-- due numeri da 1 a 5, operazione random scelta dal pc, casella di testo per inserire risultato - 
+    punteggio parte da 0, 10 punti ho vinto, -10 perdo, timer di 5 secondi per ogni operazione  esempio 4 + ? = 10 -->
+    <body class="p-3 mb-2 bg-danger text-white text-center" >
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <a class="btn btn-primary" onclick="location.href = 'index.html'" role="button" style="width: 200px">Inizia/Ricomincia</a>
+                <form action="" class="col-12" method="get">
+                    <div class="form-group">
+                        <br><br>
+                        <p id="testo" class="display-6"></p>
+                        <br>
+                        <h7 style="color: white">Risultato: <input type="text" id="txtNumDaIndovinare" name="txtNumDaIndovinare" pattern="[0-9]*"required="" ></h7>
+                        <button id="btnConfirm" type="button" onclick="gioco();" class="btn btn-primary" value="Submit">Conferma</button>
+                        <br><br>
+                    </div>
+                </form>
+
+                <h7 style="color: white">Punteggio: <input type="text" id="txtPunteggio" name="txtPunteggio" readonly="" value="0"></h7>
+                <!--<div align = "center">
+                    <input type="text" id="txt1" name="txt1" value="timer" readonly="">
+                </div>
+                <br><br>-->
+            </div>
+        </div>
+    </body>
+    <script type = "text/javascript">
+
+
+        var operazione;
+        var random;
+        var num;
+        var r = document.getElementById("txtNumDaIndovinare");
+        var ris;
+        var punteggio = 0;
+        var testo = document.getElementById("testo");
+
+        newRandom();
+
+        function gioco() {
+            if (random == r.value) {
+                punteggio = punteggio + 1;
+            } else {
+                punteggio = punteggio - 1;
+            }
+
+            document.getElementById("txtPunteggio").value = punteggio;
+
+            if (punteggio === 10) {
+                window.alert("Hai vinto!");
+            } else if (punteggio === -10) {
+                window.alert("Hai perso!");
+            }
+            document.getElementById("txtNumDaIndovinare").value = "";
+
+            newRandom();
+        }
+
+        function newRandom() {
+            operazione = Math.floor(Math.random() * 4) + 1;
+            random = Math.floor(Math.random() * 10) + 1;
+            num = Math.floor(Math.random() * 10) + 1;
+
+            switch (operazione) {
+                case 1:
+                    operazione = '+';
+                    ris = num + random;
+                    break;
+                case 2:
+                    operazione = '-';
+                    ris = num - random;
+                    break;
+
+                case 3:
+                    operazione = '*';
+                    ris = num * random;
+                    break;
+
+                case 4:
+                    operazione = '/';
+                    ris = num / random;
+                    break;
+            }
+
+            testo.innerHTML = num + " " + operazione + " " + "?" + " = " + ris;
+        }
+    </script>
+
+    <script type="text/javascript">
+        window.addEventListener('keydown', function (e) {
+            if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter' || e.keyCode == 13) {
+                if (e.target.nodeName == 'INPUT' && e.target.type == 'text') {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        }, true);
+    </script>
+</html>
