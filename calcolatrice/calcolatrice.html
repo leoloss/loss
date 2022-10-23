@@ -67,7 +67,7 @@ and open the template in the editor.
     <body class="p-3 mb-2 bg-danger text-white text-center" >
         <div class="container h-100">
             <div class="row h-100 justify-content-center align-items-center">
-                <a class="btn btn-primary" onclick="location.href = 'index.html'" role="button" style="width: 200px">Inizia/Ricomincia</a>
+                <a class="btn btn-primary" onclick="rigioca()" role="button" style="width: 200px">Inizia/Ricomincia</a>
                 <form action="" class="col-12" method="get">
                     <div class="form-group">
                         <br><br>
@@ -161,8 +161,9 @@ and open the template in the editor.
 
         function rigioca() {
             document.getElementById("txtNumDaIndovinare").value = "";
-            document.getElementById("txtPunteggio").value = "";
-            document.getElementById("txtTimer").value = "";
+            document.getElementById("txtPunteggio").value = 0;
+            document.getElementById("txtTimer").value = 0;
+            punteggio=0;
             newRandom();
         }
     </script>
