@@ -158,6 +158,13 @@ and open the template in the editor.
 
             testo.innerHTML = num + " " + operazione + " " + "?" + " = " + ris;
         }
+
+        function rigioca() {
+            document.getElementById("txtNumDaIndovinare").value = "";
+            document.getElementById("txtPunteggio").value = "";
+            document.getElementById("txtTimer").value = "";
+            newRandom();
+        }
     </script>
 
     <script type="text/javascript">
