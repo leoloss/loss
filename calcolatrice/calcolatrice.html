@@ -80,6 +80,8 @@ and open the template in the editor.
                 </form>
 
                 <h7 style="color: white">Punteggio: <input type="text" id="txtPunteggio" name="txtPunteggio" readonly="" value="0"></h7>
+                <br><br>
+                <h7 style="color: white">Timer: <input type="text" id="txtTimer" name="txtTimer" readonly="" value="0"></h7>
                 <!--<div align = "center">
                     <input type="text" id="txt1" name="txt1" value="timer" readonly="">
                 </div>
@@ -98,6 +100,12 @@ and open the template in the editor.
         var punteggio = 0;
         var testo = document.getElementById("testo");
 
+        /*function inserWorld() {
+         let temp = setInterval(5, sec);
+         if (r == "" && temp == 0) {
+         newRandom();
+         }*/
+
         newRandom();
 
         function gioco() {
@@ -111,10 +119,13 @@ and open the template in the editor.
 
             if (punteggio === 10) {
                 window.alert("Hai vinto!");
+                document.getElementById("btnConfirm").disabled = true;
             } else if (punteggio === -10) {
                 window.alert("Hai perso!");
+                document.getElementById("btnConfirm").disabled = true;
             }
             document.getElementById("txtNumDaIndovinare").value = "";
+
 
             newRandom();
         }
