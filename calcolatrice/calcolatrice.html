@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <title>Calcolatrice</title>
 
-        <link href="../bootstrap/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../bootstrapExample/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <style>
         .bd-placeholder-img {
@@ -62,18 +62,18 @@ and open the template in the editor.
             -webkit-overflow-scrolling: touch;
         }
     </style>
-    <!-- due numeri da 1 a 5, operazione random scelta dal pc, casella di testo per inserire risultato - 
-    punteggio parte da 0, 10 punti ho vinto, -10 perdo, timer di 5 secondi per ogni operazione  esempio 4 + ? = 10 -->
+    <!-- due numeri da 1 a 5, operazione random scelta dal pc, casella di testo per inserire risultato -
+    punteggio parte da 0, 10 punti ho vinto, -10 perdo, timer di 5 secondi per ogni operazione esempio 4 + ? = 10 -->
     <body class="p-3 mb-2 bg-danger text-white text-center" >
         <div class="container h-100">
             <div class="row h-100 justify-content-center align-items-center">
-                <a class="btn btn-primary" onclick="rigioca()" role="button" style="width: 200px">Inizia/Ricomincia</a>
+                <button class="btn btn-primary" id="btnRigioca" onclick="rigioca()" role="button" style="width: 130px">Inizia</button>
                 <form action="" class="col-12" method="get">
                     <div class="form-group">
                         <br><br>
                         <p id="testo" class="display-6"></p>
                         <br>
-                        <h7 style="color: white">Risultato: <input type="text" id="txtNumDaIndovinare" name="txtNumDaIndovinare" pattern="[0-9]*"required="" ></h7>
+                        <h7 style="color: white">Risultato: <input type="text" id="txtNumDaIndovinare" name="txtNumDaIndovinare" pattern="[0-9]{1,}" required=""></h7>
                         <button id="btnConfirm" type="button" onclick="gioco();" class="btn btn-primary" value="Submit">Conferma</button>
                         <br><br>
                     </div>
@@ -81,9 +81,9 @@ and open the template in the editor.
 
                 <h7 style="color: white">Punteggio: <input type="text" id="txtPunteggio" name="txtPunteggio" readonly="" value="0"></h7>
                 <br><br>
-                <h7 style="color: white">Timer: <input type="text" id="txtTimer" name="txtTimer" readonly="" value="0"></h7>
-                <!--<div align = "center">
-                    <input type="text" id="txt1" name="txt1" value="timer" readonly="">
+                <!--<h7 style="color: white">Timer: <input type="text" id="txtTimer" name="txtTimer" readonly="" value="0"></h7>
+                <div align = "center">
+                <input type="text" id="txt1" name="txt1" value="timer" readonly="">
                 </div>
                 <br><br>-->
             </div>
@@ -99,6 +99,10 @@ and open the template in the editor.
         var ris;
         var punteggio = 0;
         var testo = document.getElementById("testo");
+        var temp = true;
+
+        document.getElementById("txtNumDaIndovinare").disabled = true;
+        document.getElementById("btnConfirm").disabled = true;
 
         /*function inserWorld() {
          let temp = setInterval(5, sec);
@@ -109,25 +113,36 @@ and open the template in the editor.
         newRandom();
 
         function gioco() {
-            if (random == r.value) {
-                punteggio = punteggio + 1;
-            } else {
-                punteggio = punteggio - 1;
+            if (r.value === "") {
+                window.alert("Inserisci un valore!");
+                temp = false;
             }
 
-            document.getElementById("txtPunteggio").value = punteggio;
+            if (temp === true) {
+                if (random === r.value) {
+                    punteggio = punteggio + 1;
+                } else {
+                    punteggio = punteggio - 1;
+                }
 
-            if (punteggio === 10) {
-                window.alert("Hai vinto!");
-                document.getElementById("btnConfirm").disabled = true;
-            } else if (punteggio === -10) {
-                window.alert("Hai perso!");
-                document.getElementById("btnConfirm").disabled = true;
+                document.getElementById("txtPunteggio").value = punteggio;
+
+                if (punteggio === 10) {
+                    window.alert("Hai vinto!");
+                    document.getElementById("btnConfirm").disabled = true;
+                    document.getElementById("btnRigioca").disabled = false;
+                } else if (punteggio === -10) {
+                    window.alert("Hai perso!");
+                    document.getElementById("btnConfirm").disabled = true;
+                    document.getElementById("btnRigioca").disabled = false;
+                }
+                document.getElementById("txtNumDaIndovinare").value = "";
+
+                newRandom();
             }
-            document.getElementById("txtNumDaIndovinare").value = "";
+           
+            temp = true;
 
-
-            newRandom();
         }
 
         function newRandom() {
@@ -160,11 +175,13 @@ and open the template in the editor.
         }
 
         function rigioca() {
+            document.getElementById("txtNumDaIndovinare").disabled = false;
             document.getElementById("txtNumDaIndovinare").value = "";
             document.getElementById("txtPunteggio").value = 0;
-            document.getElementById("txtTimer").value = 0;
-            punteggio=0;
+            punteggio = 0;
+            document.getElementById("btnConfirm").disabled = false;
             newRandom();
+            document.getElementById("btnRigioca").disabled = true;
         }
     </script>
 
