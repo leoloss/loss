@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <title>MORRA CINESE</title>
+        <script src="js/loss.js" type="text/javascript" ></script>
+    </head>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+
+    <body>
+
+        <div class="container">
+            <div style="text-align: center; font-family: cursive; margin: 2%;">
+                <br>
+                <h1>MORRA CINESE</h1>
+                <br>
+                <hr />
+            </div>
+            <br>
+            <span id="error"></span>
+
+            <span id="first_page">
+                <form action="" class="col-12" method="get">
+                    <div style="text-align: center">
+                        <h2 class="d-inline-block">GIOCA</h2>
+
+                        <input type="text" id="player1" placeholder="Nome Giocatore" style="margin-right:20px;"/>
+                        <input type="number" placeholder="Numero di Mani" id="num" name="nmMani" min="0" style="margin-right:15px;"/>
+                        <a href="#" class="btn btn-default" onclick="gioca()" id="button">Gioca!</a>
+                    </div>
+                </form>
+
+            </span>
+            <div style="text-align: center; margin: 2%;">
+                <p><img src="img/carta_forbice_sasso.png" height="350" width="250" name="hm" id="imgIniziale"></p>
+
+                <img src="img/carta_forbice_sasso.png" usemap="#image-map" id="imgGioco" hidden="true">
+                <map name="image-map">
+                    <area coords="238,325,63,171" shape="rect" onclick="carta()" id="carta">
+                    <area coords="1,0,180,129"    shape="rect" onclick="forbice()" id="forbice">
+                    <area coords="399,167,265,45" shape="rect" onclick="sasso()" id="sasso">
+                </map>
+
+                <img src="img/carta_sx.png" height="200" width="100" name="hm" id="carta_sx" hidden="true">
+                <img src="img/carta_dx.png" height="200" width="100" name="hm" id="carta_dx" hidden="true">
+
+                <img src="img/forbice_sx.png" height="200" width="100" name="hm" id="forbice_sx" hidden="true">
+                <img src="img/forbice_dx.png" height="200" width="100" name="hm" id="forbice_dx" hidden="true">
+
+                <img src="img/sasso_sx.png" height="200" width="100" name="hm" id="sasso_sx" hidden="true">
+                <img src="img/sasso_dx.png" height="200" width="100" name="hm" id="sasso_dx" hidden="true">
+            </div>
+
+            <br>
+            <div style="text-align: center">
+                <input type="text" id="vincitore" hidden="true" style="margin-right:20px;"/>
+                
+            </div>
+            
+            
+        </div>
+    </body>
+</html>
