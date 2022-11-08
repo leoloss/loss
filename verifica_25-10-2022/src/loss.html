@@ -99,23 +99,26 @@ and open the template in the editor.
                     <area coords="399,167,265,45" shape="rect" onclick="sasso()" id="sasso">
                 </map>
 
-                <img src="img/carta_sx.png" height="200" width="100" name="hm" id="carta_sx" hidden="true">
-                <img src="img/carta_dx.png" height="200" width="100" name="hm" id="carta_dx" hidden="true">
+                <img src="img/carta_sx.png" name="hm" id="carta_sx" hidden="true">
+                <img src="img/sasso_sx.png" name="hm" id="sasso_sx" hidden="true">
+                <img src="img/forbice_sx.png" name="hm" id="forbice_sx" hidden="true">
 
-                <img src="img/forbice_sx.png" height="200" width="100" name="hm" id="forbice_sx" hidden="true">
-                <img src="img/forbice_dx.png" height="200" width="100" name="hm" id="forbice_dx" hidden="true">
-
-                <img src="img/sasso_sx.png" height="200" width="100" name="hm" id="sasso_sx" hidden="true">
-                <img src="img/sasso_dx.png" height="200" width="100" name="hm" id="sasso_dx" hidden="true">
+                <img src="img/carta_dx.png" name="hm" id="carta_dx" hidden="true">
+                <img src="img/forbice_dx.png" name="hm" id="forbice_dx" hidden="true">
+                <img src="img/sasso_dx.png" name="hm" id="sasso_dx" hidden="true">
+                
             </div>
 
             <br>
             <div style="text-align: center">
                 <input type="text" id="vincitore" hidden="true" style="margin-right:20px;"/>
-                
+
             </div>
             
-            
+            <br><br>
+            <button hidden="true" type="button" id="btnProssimaManche" class="btn btn-primary" onclick="gioca()">prossima manche</button>
+
+
         </div>
     </body>
 </html>
