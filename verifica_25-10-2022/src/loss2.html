@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it">
+    <head>
+
+        <title>Morra cinese</title>
+        <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+        <meta http-equiv="Content-Language" content="it" />
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href=".css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
+
+        <script type="text/javascript">
+
+            var giocate= new Array ("carta", "forbice", "sasso");
+            var punteggioPc=0;
+            var punteggioGioc=0;
+            var testoRis;
+            var nomeGioc;
+            var numeroMani;
+            var giocataPc="";
+           
+            function inizia(){
+                document.getElementById("divInizio").hidden = true;
+                document.getElementById("divGioco").hidden = false;
+                nomeGioc=document.getElementById("txtNome").value;
+                scelta= nomeGioc + " fai la tua scelta!";
+                document.getElementById("lblFaiScelta").innerHTML=scelta;
+                numeroMani=document.getElementById("numMani").value;
+            }
+           
+            function gioca(val){
+                random=Math.round(Math.random()*(giocate.length - 1));
+                giocataPc=giocate[random];
+                if(val=='c'){
+                    document.getElementById("imgRisGiocatore").src="img/carta_sx.png";
+                    if(giocataPc=="carta"){
+                        document.getElementById("imgRisPc").src="img/carta_dx.png";
+                        testoRis ="Pareggio!  PC: " + punteggioPc + " - " + nomeGioc + ": " + punteggioGioc;
+                        document.getElementById("lblRis").innerHTML=testoRis;
+                    }else{
+                        if(giocataPc=="sasso"){
+                            document.getElementById("imgRisPc").src="img/sasso_dx.png";
+                            punteggioGioc++;
+                            testoRis ="Hai vinto!  PC: " + punteggioPc + " - " + nomeGioc + ": " + punteggioGioc;
+                            document.getElementById("lblRis").innerHTML=testoRis;
+                        }else{
+                            if(giocataPc=="forbice"){
+                                document.getElementById("imgRisPc").src="img/forbice_dx.png";
+                                punteggioPc++;
+                                testoRis ="Hai perso!  PC: " + punteggioPc + " - " + nomeGioc + ": " + punteggioGioc;
+                                document.getElementById("lblRis").innerHTML=testoRis;
+                            }
+                        }
+                    }
+                }else{
+                    if(val=='s'){
+                        document.getElementById("imgRisGiocatore").src="img/sasso_sx.png";
+                        if(giocataPc=="sasso"){
+                            document.getElementById("imgRisPc").src="img/sasso_dx.png";
+                            testoRis ="Pareggio!  PC: " + punteggioPc + " - " + nomeGioc + ": " + punteggioGioc;
+                            document.getElementById("lblRis").innerHTML=testoRis;
+                        }else{
+                            if(giocataPc=="forbice"){
+                                document.getElementById("imgRisPc").src="img/forbice_dx.png";
+                                punteggioGioc++;
+                                testoRis ="Hai vinto!  PC: " + punteggioPc + " - " + nomeGioc + ": " + punteggioGioc;
+                                document.getElementById("lblRis").innerHTML=testoRis;
+                            }else{
+                                if(giocataPc=="carta"){
+                                    document.getElementById("imgRisPc").src="img/carta_dx.png";
+                                    punteggioPc++;
+                                    testoRis ="Hai perso!  PC: " + punteggioPc + " - " + nomeGioc + ": " + punteggioGioc;
+                                    document.getElementById("lblRis").innerHTML=testoRis;
+                                }
+                            }
+                        }
+                    }else{
+                        if(val=='f'){
+                            document.getElementById("imgRisGiocatore").src="img/forbice_sx.png";
+                            if(giocataPc=="forbice"){
+                                document.getElementById("imgRisPc").src="img/forbice_dx.png";
+                                testoRis ="Pareggio!  PC: " + punteggioPc + " - " + nomeGioc + ": " + punteggioGioc;
+                                document.getElementById("lblRis").innerHTML=testoRis;
+                            }else{
+                                if(giocataPc=="carta"){
+                                    document.getElementById("imgRisPc").src="img/carta_dx.png";
+                                    punteggioGioc++;
+                                    testoRis ="Hai vinto!  PC: " + punteggioPc + " - " + nomeGioc + ": " + punteggioGioc;
+                                    document.getElementById("lblRis").innerHTML=testoRis;
+                                }else{
+                                    if(giocataPc=="sasso"){
+                                        document.getElementById("imgRisPc").src="img/sasso_dx.png";
+                                        punteggioPc++;
+                                        testoRis ="Hai perso!  PC: " + punteggioPc + " - " + nomeGioc + ": " + punteggioGioc;
+                                        document.getElementById("lblRis").innerHTML=testoRis;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                document.getElementById("lblRis").innerHTML=testoRis;
+                document.getElementById("divGioco").hidden = true;
+                document.getElementById("divRisultato").hidden = false;
+                numeroMani--;
+            }
+           
+            function continua(){
+                if(numeroMani>0){
+                    document.getElementById("divRisultato").hidden = true;
+                    document.getElementById("divGioco").hidden = false;
+                }else{
+                    if(punteggioGioc>punteggioPc){
+                        document.getElementById("lblVincitore").innerHTML="Congratulazioni hai vinto!";
+                    }else{
+                        if(punteggioPc>punteggioGioc){
+                            document.getElementById("lblVincitore").innerHTML="Ci dispiace, hai perso! Prova di nuovo";
+                        }else{
+                            if(punteggioGioc==punteggioPc){
+                                document.getElementById("lblVincitore").innerHTML="C'eri quasi, pareggio! Prova di nuovo";
+                            }
+                        }
+                    }
+                    document.getElementById("lblVincitore").hidden = false;
+                }
+            }
+
+        </script>
+
+    </head>
+    <body>
+        <br><br>
+        <div align="center">
+            <label id="lblTitolo" style="font-size: 40px; font-family: Georgia">
+                Gioca a morra cinese!
+            </label>
+            <br><br>
+            <div id="divInizio">
+                <label id="lblNome" for="txtNome">Nome giocatore: </label>
+                <input type="text" id="txtNome" name="nome" placeholder="Nome giocatore">
+                <br><br>
+                <label id="lblMani" for="numMani">Numero mani: </label>
+                <input type="number" id="numMani" name="nMani" min="1">
+                <br><br>
+                <button class="btn btn-primary" onclick="inizia()">Invia</button>      
+            </div>
+            <div id="divGioco" hidden="">
+                <br><br>
+                <img src="img/carta_forbice_sasso.png" usemap="#image-map">
+                    <map name="image-map">
+                    <area coords="238,325,63,171" shape="rect" onclick="gioca('c')">
+                    <area coords="1,0,180,129"    shape="rect" onclick="gioca('f')">
+                    <area coords="399,167,265,45" shape="rect" onclick="gioca('s')">
+                </map>
+                    <br><br><br><br>
+                <label id="lblFaiScelta"></label>
+            </div>
+            <div id="divRisultato" hidden="">
+               <img src="" id="imgRisGiocatore"><img src="" id="imgRisPc">
+               <br><br>
+               <label id="lblRis"></label>
+               <br>
+               <label id="sceltaPc"></label>
+               <br>
+               <button class="btn btn-primary" onclick="continua()">Continua</button>   
+            </div>
+            <br><br>
+            <label id="lblVincitore"></label>
+           
+        </div>
+
+    </body>
+</html>
